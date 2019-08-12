@@ -1,0 +1,50 @@
+name: 1HP
+main: me.bukkit.onehitpro.main
+version: 1.0
+author: OlleThunberg
+prefix: onehp
+commands:
+   ohp_setup:
+      description: Sets up a lobby in the current world
+      permission: onehp.lobby.create
+      permission-message: You do not have permission!
+      usage: /<command>
+   ohp_setmaxplayers:
+      description: Sets the max players
+      permission: onehp.lobby.setmaxplayers
+      permission-message: You do not have permission!
+      usage: /<command> [amount]
+   ohp_players:
+      description: Check the amount of players in the lobby
+      permission: onehp.lobby.players
+      permission-message: You do not have permission!
+      usage: /<command> [amount]
+   ohp_setupgame:
+      description: Sets up a game world in the current world
+      permission: onehp.lobby.create
+      permission-message: You do not have permission!
+      usage: /<command> [amount]
+   ohp_setteamspawn:
+      description: Sets a teamspawn at current location
+      permission: onehp.lobby.create
+      permission-message: You do not have permission!
+      usage: /<command> 1 | 2
+   ohp_setupfinishlocation:
+      description: Sets the location where players get teleported to after a game is finished.
+      permission: onehp.lobby.create
+      permission-message: You do not have permission!
+      usage: /<command>
+permissions:
+  onehp.lobby.create:
+   description: Allows "1hp setup lobby" command
+   default: op
+  onehp.lobby.delete:
+   description: Allows "1hp delete lobby" command
+   default: op
+  onehp.lobby.setmaxplayers:
+   description: Allows "1hp setmaxplayers" command
+   default: op
+  onehp.lobby.players:
+   description: Allows "1hp setmaxplayers" command
+   default: op
+   
