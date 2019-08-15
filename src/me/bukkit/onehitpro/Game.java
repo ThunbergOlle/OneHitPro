@@ -134,7 +134,6 @@ public class Game implements Listener{
 						
 						for(int x = 0; x < teamone.size(); x++) {
 							if(teamone.get(x).equals(killer)) {
-								p.sendMessage(ChatColor.RED +"You took damage from a teammate!");
 								killer.sendMessage(ChatColor.RED + "You can not attack this player");
 								e.setCancelled(true);
 								return;
@@ -144,7 +143,7 @@ public class Game implements Listener{
 								p.setExhaustion(0);
 								e.setCancelled(true);
 								p.teleport((Location) plugin.getConfig().get("game.1"));
-							}
+								p.addPotionEffect(new PotionEffect(PotionEffectType.WATER_BREATHING, 60, 2));							}
 						}
 						
 						if(a.getShooter() instanceof Player){
@@ -172,6 +171,21 @@ public class Game implements Listener{
 						Arrow a = (Arrow) e.getDamager();
 						LivingEntity killer = (LivingEntity) a.getShooter();
 						
+						for(int x = 0; x < teamtwo.size(); x++) {
+							if(teamtwo.get(x).equals(killer)) {
+								killer.sendMessage(ChatColor.RED + "You can not attack this player");								
+								e.setCancelled(true);
+								return;
+							}else if(x == teamtwo.size() - 1) {
+								p.sendMessage(ChatColor.DARK_RED + "You died!");
+								p.setHealth(20);
+								p.setExhaustion(0);
+								e.setCancelled(true);
+								p.teleport((Location) plugin.getConfig().get("game.2"));
+								p.addPotionEffect(new PotionEffect(PotionEffectType.WATER_BREATHING, 60, 2));
+							}
+						}
+						
 						if(a.getShooter() instanceof Player){
 							if(a.getShooter() == p) {
 								e.setCancelled(true);
@@ -192,20 +206,7 @@ public class Game implements Listener{
 							}
 
 						}
-						for(int x = 0; x < teamtwo.size(); x++) {
-							if(teamtwo.get(x).equals(killer)) {
-								p.sendMessage(ChatColor.RED +"You took damage from a teammate!");
-								e.setCancelled(true);
-								return;
-							}else if(x == teamtwo.size() - 1) {
-								p.sendMessage(ChatColor.DARK_RED + "You died!");
-								p.setHealth(20);
-								p.setExhaustion(0);
-								e.setCancelled(true);
-								p.teleport((Location) plugin.getConfig().get("game.2"));
-								return;
-							}
-						}
+
 						
 
 					}
